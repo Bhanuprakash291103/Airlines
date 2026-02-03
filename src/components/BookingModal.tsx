@@ -14,7 +14,7 @@ interface BookingModalProps {
 export const BookingModal: React.FC<BookingModalProps> = ({ flight, isOpen, onClose, onConfirm }) => {
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
-    const [selectedSeat, setSelectedSeat] = useState<string | null>(null);
+    const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
     const [extras, setExtras] = useState({
         baggage: false,
         insurance: false
@@ -23,8 +23,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({ flight, isOpen, onCl
     if (!flight) return null;
 
     const extrasPrice = (extras.baggage ? 45 : 0) + (extras.insurance ? 25 : 0);
-    const seatPrice = selectedSeat?.match(/^[1-2]/) ? 50 : 0; // Extra for front rows
-    const totalPrice = flight.price + extrasPrice + seatPrice;
+    const seatPrice = selectedSeats.reduce((acc, seat) => acc + (seat.match(/^[1-2]/) ? 50 : 0), 0);
+    const totalPrice = (flight.price * selectedSeats.length) + extrasPrice + seatPrice;
 
     const handleNext = () => {
         if (step < 5) {
@@ -188,14 +188,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({ flight, isOpen, onCl
                                                 {cols.map((col) => {
                                                     if (col === '') return <div key={`aisle-${row}`} className="w-6" />;
                                                     const id = `${row}${col}`;
-                                                    const isSelected = selectedSeat === id;
+                                                    const isSelected = selectedSeats.includes(id);
                                                     const isOccupied = !isSelected && (row + id.charCodeAt(1)) % 7 === 0;
 
                                                     return (
                                                         <button
                                                             key={id}
                                                             disabled={isOccupied}
-                                                            onClick={() => setSelectedSeat(id)}
+                                                            onClick={() => {
+                                                                if (isSelected) {
+                                                                    setSelectedSeats(selectedSeats.filter(s => s !== id));
+                                                                } else if (selectedSeats.length < 4) {
+                                                                    setSelectedSeats([...selectedSeats, id]);
+                                                                }
+                                                            }}
                                                             className={cn(
                                                                 "w-8 h-8 rounded-lg text-[10px] font-bold transition-all duration-300",
                                                                 isSelected ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20 scale-110" :
@@ -210,11 +216,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({ flight, isOpen, onCl
                                             </div>
                                         ))}
                                     </div>
-                                    {selectedSeat && (
-                                        <p className="text-center text-indigo-400 font-bold text-sm">
-                                            Seat {selectedSeat} Selected {selectedSeat.match(/^[1-2]/) ? '(+$50 Premium)' : ''}
+                                    <div className="text-center space-y-2">
+                                        <p className="text-slate-500 text-sm font-medium">
+                                            {selectedSeats.length} / 4 Seats Selected
                                         </p>
-                                    )}
+                                        {selectedSeats.length > 0 && (
+                                            <p className="text-indigo-400 font-bold text-sm">
+                                                Seats: {selectedSeats.join(', ')}
+                                            </p>
+                                        )}
+                                        {selectedSeats.length === 4 && (
+                                            <p className="text-amber-500 text-xs font-bold uppercase tracking-wider">
+                                                Seat limit reached
+                                            </p>
+                                        )}
+                                    </div>
                                 </motion.div>
                             )}
 
@@ -262,12 +278,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({ flight, isOpen, onCl
                                     </p>
                                     <div className="glass-card p-4 rounded-2xl flex items-center justify-between text-left">
                                         <div>
-                                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Seat Assigned</p>
-                                            <p className="text-white font-bold">{selectedSeat || 'Not selected'}</p>
+                                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Seats Assigned</p>
+                                            <p className="text-white font-bold">{selectedSeats.join(', ')}</p>
                                         </div>
                                         <div>
-                                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Boarding Group</p>
-                                            <p className="text-white font-bold">{selectedSeat?.match(/^[1-2]/) ? 'Priority' : 'General'}</p>
+                                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Total Passengers</p>
+                                            <p className="text-white font-bold">{selectedSeats.length}</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -291,10 +307,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({ flight, isOpen, onCl
                                 )}
                                 <button
                                     onClick={handleNext}
-                                    disabled={loading || (step === 3 && !selectedSeat)}
+                                    disabled={loading || (step === 3 && selectedSeats.length === 0)}
                                     className={cn(
                                         "btn-primary flex-1 py-4 flex items-center justify-center gap-2",
-                                        (loading || (step === 3 && !selectedSeat)) && "opacity-70 cursor-not-allowed"
+                                        (loading || (step === 3 && selectedSeats.length === 0)) && "opacity-70 cursor-not-allowed"
                                     )}
                                 >
                                     {loading ? (
