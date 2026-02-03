@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { FlightCard } from './components/FlightCard';
 import { BookingModal } from './components/BookingModal';
 import { BookingHistory } from './components/BookingHistory';
+import { AuthModal } from './components/AuthModal';
 import type { Flight } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Filter, CheckCircle2 } from 'lucide-react';
@@ -58,6 +59,11 @@ function App() {
   const [selectedFlight, setSelectedFlight] = useState<Flight | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [user, setUser] = useState<{ name: string; email: string } | null>(() => {
+    const saved = localStorage.getItem('skyreserve_user');
+    return saved ? JSON.parse(saved) : null;
+  });
   const [showSuccess, setShowSuccess] = useState(false);
   const [activeFilter, setActiveFilter] = useState<'All' | 'Economy' | 'Business' | 'First'>('All');
   const [searchParams, setSearchParams] = useState({ origin: '', destination: '' });
@@ -65,6 +71,13 @@ function App() {
     const saved = localStorage.getItem('skyreserve_bookings');
     return saved ? JSON.parse(saved) : [];
   });
+
+  const handleLogin = (userData: { name: string; email: string }) => {
+    setUser(userData);
+    localStorage.setItem('skyreserve_user', JSON.stringify(userData));
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 5000);
+  };
 
   const filteredFlights = flights.filter(f => {
     const matchesFilter = activeFilter === 'All' || f.class === activeFilter;
@@ -109,7 +122,11 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <Navbar onHistoryClick={() => setIsHistoryOpen(true)} />
+      <Navbar
+        onHistoryClick={() => setIsHistoryOpen(true)}
+        onSignInClick={() => setIsAuthOpen(true)}
+        user={user}
+      />
 
       <main>
         <Hero onSearch={handleHeroSearch} />
@@ -225,6 +242,12 @@ function App() {
         onCancel={handleCancelBooking}
       />
 
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+        onLogin={handleLogin}
+      />
+
       {/* Success Notification */}
       <AnimatePresence>
         {showSuccess && (
@@ -235,7 +258,7 @@ function App() {
             className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] bg-green-600 text-white px-8 py-4 rounded-full shadow-2xl shadow-green-600/20 flex items-center gap-3 font-bold"
           >
             <CheckCircle2 className="w-5 h-5" />
-            Reservation Confirmed Successfully!
+            {user ? `Logged in as ${user.name}` : 'Reservation Confirmed Successfully!'}
           </motion.div>
         )}
       </AnimatePresence>
