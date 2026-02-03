@@ -1,5 +1,6 @@
 export interface Flight {
     id: string;
+    flightNumber: string;
     airline: string;
     airlineLogo: string;
     origin: string;
@@ -7,7 +8,9 @@ export interface Flight {
     departureTime: string;
     arrivalTime: string;
     duration: string;
+    stops: 'Non-stop' | '1 Stop' | '2 Stops';
     price: number;
+    priceCurrency: 'INR' | 'USD';
     class: 'Economy' | 'Business' | 'First';
     weather?: {
         temp: number;
