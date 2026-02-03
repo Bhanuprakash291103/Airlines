@@ -14,6 +14,7 @@ export interface Flight {
         condition: 'Sunny' | 'Cloudy' | 'Rainy' | 'Clear';
     };
     pointsEarned?: number;
+    date: string;
 }
 
 export interface SearchParams {

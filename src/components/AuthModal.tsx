@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { X, Mail, Lock, User, Github, Chrome, ArrowRight, Loader2 } from 'lucide-react';
+import { X, Mail, Lock, User, Github, ArrowRight, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '../lib/utils';
 
 interface AuthModalProps {
     isOpen: boolean;
@@ -154,13 +153,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onLogin }
                             </div>
 
                             <div className="grid grid-cols-2 gap-4 mb-8">
-                                <button className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors text-white font-medium">
-                                    <Chrome className="w-5 h-5" />
+                                <button
+                                    onClick={() => window.location.href = 'https://accounts.google.com'}
+                                    className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all font-medium text-sm"
+                                >
+                                    <img src="https://www.svgrepo.com/show/475656/google_color.svg" className="w-5 h-5" alt="Google" />
                                     Google
                                 </button>
-                                <button className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors text-white font-medium">
+                                <button
+                                    onClick={() => window.location.href = 'https://github.com/login'}
+                                    className="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all font-medium text-sm"
+                                >
                                     <Github className="w-5 h-5" />
-                                    Github
+                                    GitHub
                                 </button>
                             </div>
 

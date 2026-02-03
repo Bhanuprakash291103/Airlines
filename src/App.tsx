@@ -24,7 +24,8 @@ const MOCK_FLIGHTS: Flight[] = [
     price: 1250,
     class: 'Business',
     weather: { temp: 18, condition: 'Cloudy' },
-    pointsEarned: 2500
+    pointsEarned: 2500,
+    date: '2026-02-15'
   },
   {
     id: '2',
@@ -38,7 +39,8 @@ const MOCK_FLIGHTS: Flight[] = [
     price: 980,
     class: 'Economy',
     weather: { temp: 22, condition: 'Sunny' },
-    pointsEarned: 1200
+    pointsEarned: 1200,
+    date: '2026-02-15'
   },
   {
     id: '3',
@@ -52,7 +54,8 @@ const MOCK_FLIGHTS: Flight[] = [
     price: 4500,
     class: 'First',
     weather: { temp: 34, condition: 'Clear' },
-    pointsEarned: 9000
+    pointsEarned: 9000,
+    date: '2026-02-16'
   },
   {
     id: '4',
@@ -66,7 +69,8 @@ const MOCK_FLIGHTS: Flight[] = [
     price: 1100,
     class: 'Economy',
     weather: { temp: 12, condition: 'Rainy' },
-    pointsEarned: 1800
+    pointsEarned: 1800,
+    date: '2026-02-16'
   },
   {
     id: '5',
@@ -80,77 +84,383 @@ const MOCK_FLIGHTS: Flight[] = [
     price: 2800,
     class: 'Business',
     weather: { temp: 25, condition: 'Clear' },
-    pointsEarned: 4500
+    pointsEarned: 4500,
+    date: '2026-02-17'
   },
   {
     id: '6',
-    airline: 'Royal Skies',
-    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/811/811631.png',
-    origin: 'DXB',
-    destination: 'SIN',
-    departureTime: '3:00 AM',
-    arrivalTime: '2:30 PM',
-    duration: '7h 30m',
-    price: 4200,
-    class: 'First',
+    airline: 'IndiGo',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Indigo_Logo.svg/1200px-Indigo_Logo.svg.png',
+    origin: 'DEL',
+    destination: 'BOM',
+    departureTime: '6:00 AM',
+    arrivalTime: '8:15 AM',
+    duration: '2h 15m',
+    price: 4500,
+    class: 'Economy',
     weather: { temp: 30, condition: 'Clear' },
-    pointsEarned: 8500
+    pointsEarned: 500,
+    date: '2026-02-15'
   },
   {
     id: '7',
-    airline: 'Euro Express',
-    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/753/753314.png',
-    origin: 'AMS',
-    destination: 'FCO',
-    departureTime: '9:15 AM',
-    arrivalTime: '11:25 AM',
-    duration: '2h 10m',
-    price: 150,
+    airline: 'Air India',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Air_India_Logo.svg/1200px-Air_India_Logo.svg.png',
+    origin: 'BOM',
+    destination: 'BLR',
+    departureTime: '10:30 AM',
+    arrivalTime: '12:15 PM',
+    duration: '1h 45m',
+    price: 3800,
     class: 'Economy',
-    weather: { temp: 15, condition: 'Cloudy' },
-    pointsEarned: 300
+    weather: { temp: 28, condition: 'Cloudy' },
+    pointsEarned: 400,
+    date: '2026-02-15'
   },
   {
     id: '8',
-    airline: 'Asian Star',
-    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-    origin: 'ICN',
-    destination: 'BKK',
-    departureTime: '6:50 PM',
-    arrivalTime: '10:40 PM',
-    duration: '5h 50m',
-    price: 850,
+    airline: 'Vistara',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Vistara_logo.svg/1024px-Vistara_logo.svg.png',
+    origin: 'BLR',
+    destination: 'HYD',
+    departureTime: '2:45 PM',
+    arrivalTime: '4:00 PM',
+    duration: '1h 15m',
+    price: 8500,
     class: 'Business',
-    weather: { temp: 28, condition: 'Rainy' },
-    pointsEarned: 2200
+    weather: { temp: 32, condition: 'Sunny' },
+    pointsEarned: 1200,
+    date: '2026-02-15'
   },
   {
     id: '9',
-    airline: 'Atlas Air',
-    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/811/811631.png',
-    origin: 'FRA',
-    destination: 'JFK',
-    departureTime: '1:45 PM',
-    arrivalTime: '4:20 PM',
-    duration: '8h 35m',
-    price: 3600,
-    class: 'First',
-    weather: { temp: 20, condition: 'Sunny' },
-    pointsEarned: 7200
+    airline: 'SpiceJet',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/SpiceJet_logo.svg/1200px-SpiceJet_logo.svg.png',
+    origin: 'MAA',
+    destination: 'CCU',
+    departureTime: '5:20 PM',
+    arrivalTime: '7:45 PM',
+    duration: '2h 25m',
+    price: 5200,
+    class: 'Economy',
+    weather: { temp: 26, condition: 'Rainy' },
+    pointsEarned: 600,
+    date: '2026-02-16'
   },
   {
     id: '10',
-    airline: 'Sky Reserve',
+    airline: 'IndiGo',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Indigo_Logo.svg/1200px-Indigo_Logo.svg.png',
+    origin: 'DEL',
+    destination: 'GOI',
+    departureTime: '11:15 AM',
+    arrivalTime: '1:45 PM',
+    duration: '2h 30m',
+    price: 6800,
+    class: 'Economy',
+    weather: { temp: 29, condition: 'Sunny' },
+    pointsEarned: 700,
+    date: '2026-02-16'
+  },
+  {
+    id: '11',
+    airline: 'Air India',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Air_India_Logo.svg/1200px-Air_India_Logo.svg.png',
+    origin: 'HYD',
+    destination: 'MAA',
+    departureTime: '8:45 AM',
+    arrivalTime: '10:00 AM',
+    duration: '1h 15m',
+    price: 3200,
+    class: 'Economy',
+    weather: { temp: 31, condition: 'Clear' },
+    pointsEarned: 350,
+    date: '2026-02-16'
+  },
+  {
+    id: '12',
+    airline: 'Vistara',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Vistara_logo.svg/1024px-Vistara_logo.svg.png',
+    origin: 'CCU',
+    destination: 'DEL',
+    departureTime: '12:00 PM',
+    arrivalTime: '2:25 PM',
+    duration: '2h 25m',
+    price: 12500,
+    class: 'Business',
+    weather: { temp: 24, condition: 'Cloudy' },
+    pointsEarned: 1800,
+    date: '2026-02-17'
+  },
+  {
+    id: '13',
+    airline: 'SpiceJet',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/SpiceJet_logo.svg/1200px-SpiceJet_logo.svg.png',
+    origin: 'PNQ',
+    destination: 'AMD',
+    departureTime: '4:10 PM',
+    arrivalTime: '5:35 PM',
+    duration: '1h 25m',
+    price: 2900,
+    class: 'Economy',
+    weather: { temp: 27, condition: 'Sunny' },
+    pointsEarned: 300,
+    date: '2026-02-17'
+  },
+  {
+    id: '14',
+    airline: 'IndiGo',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Indigo_Logo.svg/1200px-Indigo_Logo.svg.png',
+    origin: 'DEL',
+    destination: 'LXR',
+    departureTime: '10:00 AM',
+    arrivalTime: '11:45 AM',
+    duration: '1h 45m',
+    price: 4100,
+    class: 'Economy',
+    weather: { temp: 22, condition: 'Clear' },
+    pointsEarned: 450,
+    date: '2026-02-18'
+  },
+  {
+    id: '15',
+    airline: 'Air India Express',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Air_India_Logo.svg/1200px-Air_India_Logo.svg.png',
+    origin: 'COK',
+    destination: 'DXB',
+    departureTime: '11:55 PM',
+    arrivalTime: '2:30 AM',
+    duration: '4h 05m',
+    price: 18000,
+    class: 'Economy',
+    weather: { temp: 33, condition: 'Clear' },
+    pointsEarned: 2200,
+    date: '2026-02-15'
+  },
+  {
+    id: '16',
+    airline: 'Lufthansa',
     airlineLogo: 'https://cdn-icons-png.flaticon.com/512/753/753314.png',
     origin: 'DEL',
+    destination: 'FRA',
+    departureTime: '2:10 AM',
+    arrivalTime: '7:30 AM',
+    duration: '8h 50m',
+    price: 75000,
+    class: 'Business',
+    weather: { temp: 8, condition: 'Rainy' },
+    pointsEarned: 6500,
+    date: '2026-02-15'
+  },
+  {
+    id: '17',
+    airline: 'Emirates',
+    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/811/811631.png',
+    origin: 'BOM',
     destination: 'DXB',
-    departureTime: '11:00 AM',
-    arrivalTime: '1:30 PM',
-    duration: '4h 00m',
-    price: 250,
+    departureTime: '4:30 PM',
+    arrivalTime: '6:15 PM',
+    duration: '3h 15m',
+    price: 110000,
+    class: 'First',
+    weather: { temp: 34, condition: 'Clear' },
+    pointsEarned: 12000,
+    date: '2026-02-16'
+  },
+  {
+    id: '18',
+    airline: 'Singapore Airlines',
+    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+    origin: 'BLR',
+    destination: 'SIN',
+    departureTime: '11:10 PM',
+    arrivalTime: '6:00 AM',
+    duration: '4h 20m',
+    price: 45000,
+    class: 'Business',
+    weather: { temp: 29, condition: 'Rainy' },
+    pointsEarned: 4800,
+    date: '2026-02-16'
+  },
+  {
+    id: '19',
+    airline: 'Qatar Airways',
+    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/811/811631.png',
+    origin: 'DOH',
+    destination: 'JFK',
+    departureTime: '8:15 AM',
+    arrivalTime: '3:30 PM',
+    duration: '14h 15m',
+    price: 185000,
+    class: 'First',
+    weather: { temp: 15, condition: 'Cloudy' },
+    pointsEarned: 15000,
+    date: '2026-02-17'
+  },
+  {
+    id: '20',
+    airline: 'British Airways',
+    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/753/753314.png',
+    origin: 'LHR',
+    destination: 'EWR',
+    departureTime: '10:45 AM',
+    arrivalTime: '1:50 PM',
+    duration: '8h 05m',
+    price: 95000,
+    class: 'Business',
+    weather: { temp: 12, condition: 'Cloudy' },
+    pointsEarned: 8200,
+    date: '2026-02-17'
+  },
+  {
+    id: '21',
+    airline: 'Air India',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Air_India_Logo.svg/1200px-Air_India_Logo.svg.png',
+    origin: 'DEL',
+    destination: 'LHR',
+    departureTime: '1:15 PM',
+    arrivalTime: '5:30 PM',
+    duration: '8h 45m',
+    price: 65000,
     class: 'Economy',
-    weather: { temp: 32, condition: 'Clear' },
-    pointsEarned: 600
+    weather: { temp: 14, condition: 'Rainy' },
+    pointsEarned: 5500,
+    date: '2026-02-18'
+  },
+  {
+    id: '22',
+    airline: 'IndiGo',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Indigo_Logo.svg/1200px-Indigo_Logo.svg.png',
+    origin: 'TRV',
+    destination: 'MAA',
+    departureTime: '7:00 AM',
+    arrivalTime: '8:25 AM',
+    duration: '1h 25m',
+    price: 3400,
+    class: 'Economy',
+    weather: { temp: 31, condition: 'Sunny' },
+    pointsEarned: 380,
+    date: '2026-02-15'
+  },
+  {
+    id: '23',
+    airline: 'Akasa Air',
+    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+    origin: 'BOM',
+    destination: 'CCU',
+    departureTime: '1:30 PM',
+    arrivalTime: '4:15 PM',
+    duration: '2h 45m',
+    price: 5800,
+    class: 'Economy',
+    weather: { temp: 25, condition: 'Cloudy' },
+    pointsEarned: 620,
+    date: '2026-02-15'
+  },
+  {
+    id: '24',
+    airline: 'Air India',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Air_India_Logo.svg/1200px-Air_India_Logo.svg.png',
+    origin: 'DEL',
+    destination: 'JFK',
+    departureTime: '1:45 AM',
+    arrivalTime: '7:30 AM',
+    duration: '15h 15m',
+    price: 145000,
+    class: 'Business',
+    weather: { temp: 5, condition: 'Clear' },
+    pointsEarned: 9500,
+    date: '2026-02-16'
+  },
+  {
+    id: '25',
+    airline: 'Vistara',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Vistara_logo.svg/1024px-Vistara_logo.svg.png',
+    origin: 'BOM',
+    destination: 'SIN',
+    departureTime: '11:45 PM',
+    arrivalTime: '7:45 AM',
+    duration: '5h 30m',
+    price: 32000,
+    class: 'Business',
+    weather: { temp: 30, condition: 'Rainy' },
+    pointsEarned: 3500,
+    date: '2026-02-17'
+  },
+  {
+    id: '26',
+    airline: 'Etihad Airways',
+    airlineLogo: 'https://cdn-icons-png.flaticon.com/512/811/811631.png',
+    origin: 'AUH',
+    destination: 'CDG',
+    departureTime: '2:15 AM',
+    arrivalTime: '7:40 AM',
+    duration: '7h 25m',
+    price: 165000,
+    class: 'First',
+    weather: { temp: 18, condition: 'Sunny' },
+    pointsEarned: 13500,
+    date: '2026-02-18'
+  },
+  {
+    id: '27',
+    airline: 'IndiGo',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Indigo_Logo.svg/1200px-Indigo_Logo.svg.png',
+    origin: 'DEL',
+    destination: 'BLR',
+    departureTime: '7:45 PM',
+    arrivalTime: '10:30 PM',
+    duration: '2h 45m',
+    price: 4900,
+    class: 'Economy',
+    weather: { temp: 26, condition: 'Clear' },
+    pointsEarned: 520,
+    date: '2026-02-15'
+  },
+  {
+    id: '28',
+    airline: 'Air India',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Air_India_Logo.svg/1200px-Air_India_Logo.svg.png',
+    origin: 'BOM',
+    destination: 'HYD',
+    departureTime: '8:00 AM',
+    arrivalTime: '9:25 AM',
+    duration: '1h 25m',
+    price: 3600,
+    class: 'Economy',
+    weather: { temp: 30, condition: 'Sunny' },
+    pointsEarned: 400,
+    date: '2026-02-16'
+  },
+  {
+    id: '29',
+    airline: 'SpiceJet',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/SpiceJet_logo.svg/1200px-SpiceJet_logo.svg.png',
+    origin: 'BLR',
+    destination: 'MAA',
+    departureTime: '10:45 AM',
+    arrivalTime: '11:45 AM',
+    duration: '1h 00m',
+    price: 2500,
+    class: 'Economy',
+    weather: { temp: 31, condition: 'Sunny' },
+    pointsEarned: 280,
+    date: '2026-02-17'
+  },
+  {
+    id: '30',
+    airline: 'Vistara',
+    airlineLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Vistara_logo.svg/1024px-Vistara_logo.svg.png',
+    origin: 'DEL',
+    destination: 'MAA',
+    departureTime: '6:30 PM',
+    arrivalTime: '9:15 PM',
+    duration: '2h 45m',
+    price: 11500,
+    class: 'Business',
+    weather: { temp: 28, condition: 'Clear' },
+    pointsEarned: 1500,
+    date: '2026-02-15'
   }
 ];
 
@@ -165,9 +475,10 @@ function App() {
     const saved = localStorage.getItem('skyreserve_user');
     return saved ? JSON.parse(saved) : null;
   });
+  const [successType, setSuccessType] = useState<'login' | 'booking'>('login');
   const [showSuccess, setShowSuccess] = useState(false);
   const [activeFilter, setActiveFilter] = useState<'All' | 'Economy' | 'Business' | 'First'>('All');
-  const [searchParams, setSearchParams] = useState({ origin: '', destination: '' });
+  const [searchParams, setSearchParams] = useState({ origin: '', destination: '', date: '' });
   const [bookings, setBookings] = useState<any[]>(() => {
     const saved = localStorage.getItem('skyreserve_bookings');
     return saved ? JSON.parse(saved) : [];
@@ -176,6 +487,7 @@ function App() {
   const handleLogin = (userData: { name: string; email: string }) => {
     setUser(userData);
     localStorage.setItem('skyreserve_user', JSON.stringify(userData));
+    setSuccessType('login');
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 5000);
   };
@@ -189,7 +501,8 @@ function App() {
     const matchesFilter = activeFilter === 'All' || f.class === activeFilter;
     const matchesOrigin = !searchParams.origin || f.origin.toLowerCase().includes(searchParams.origin.toLowerCase());
     const matchesDest = !searchParams.destination || f.destination.toLowerCase().includes(searchParams.destination.toLowerCase());
-    return matchesFilter && matchesOrigin && matchesDest;
+    const matchesDate = !searchParams.date || f.date === searchParams.date;
+    return matchesFilter && matchesOrigin && matchesDest && matchesDate;
   });
 
   const handleBook = (flight: Flight) => {
@@ -209,6 +522,7 @@ function App() {
       localStorage.setItem('skyreserve_bookings', JSON.stringify(updatedBookings));
     }
     setIsModalOpen(false);
+    setSuccessType('booking');
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 5000);
   };
@@ -219,7 +533,7 @@ function App() {
     localStorage.setItem('skyreserve_bookings', JSON.stringify(updated));
   };
 
-  const handleHeroSearch = (params: { origin: string; destination: string }) => {
+  const handleHeroSearch = (params: { origin: string; destination: string; date: string }) => {
     setSearchParams(params);
     // Smooth scroll to results
     const resultsSection = document.getElementById('flight-results');
@@ -382,7 +696,7 @@ function App() {
             className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[200] bg-green-600 text-white px-8 py-4 rounded-full shadow-2xl shadow-green-600/20 flex items-center gap-3 font-bold"
           >
             <CheckCircle2 className="w-5 h-5" />
-            {user ? `Logged in as ${user.name}` : 'Reservation Confirmed Successfully!'}
+            {successType === 'login' ? `Logged in as ${user?.name}` : 'Flight Booked Successfully!'}
           </motion.div>
         )}
       </AnimatePresence>
